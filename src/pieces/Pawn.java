@@ -4,7 +4,7 @@ import boards.*;
 import java.util.*;
 
 public abstract class Pawn extends Piece{
-  boolean firstMove;
+  private boolean firstMove;
 
   Pawn(String colour, byte rank, char file){
     super("Pawn", colour, rank, file);
@@ -31,6 +31,10 @@ public abstract class Pawn extends Piece{
       return true;
     }
     return false;
+  }
+
+  boolean getFirstMove(){
+    return firstMove;
   }
 
   /**

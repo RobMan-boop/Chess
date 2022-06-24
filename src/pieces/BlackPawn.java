@@ -11,7 +11,7 @@ public class BlackPawn extends Pawn {
   @Override
   List<boardLocation> possibleMoves(Board board){
     List<boardLocation> moves = new ArrayList<>();
-    if (firstMove && board.isEmpty((byte) (super.getRank()-2),super.getFile())){//Forward 2 squares available on first move for pawn
+    if (super.getFirstMove() && board.isEmpty((byte) (super.getRank()-2),super.getFile())){//Forward 2 squares available on first move for pawn
       moves.add(new boardLocation( (byte)(super.getRank() - 2), super.getFile() ));
     }
     if(board.isEmpty((byte)(super.getRank()-1),super.getFile())){ // pawn moving forward 1 square

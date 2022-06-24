@@ -3,11 +3,14 @@ package pieces;
 import boards.*;
 import java.util.*;
 
+/**
+ * represents a chess piece
+ */
 public abstract class Piece {
-  String pieceName;
-  String colour;
-  char file;
-  byte rank;
+  private String pieceName;
+  private String colour;
+  private char file;
+  private byte rank;
   Piece(String pieceName, String colour, byte rank, char file){
     this.pieceName=pieceName;
     this.colour=colour;
@@ -38,8 +41,8 @@ public abstract class Piece {
   boolean move(byte rank, char file, Board board){
     boardLocation currentMove = new boardLocation(rank,file);
     if (validMoves(board).contains(currentMove)){
-      this.file=file;
-      this.rank=rank;
+      this.setFile(file);
+      this.setRank(rank);
       return true;
     }
     return false;

@@ -4,27 +4,27 @@ import boards.*;
 import java.util.*;
 
 public class WhitePawn extends Pawn {
-  WhitePawn(String colour, byte rank, char file){
+  public WhitePawn(String colour, byte rank, char file){
 
     super(colour, rank, file);
   }
   @Override
-  List<boardLocation> possibleMoves(Board board){
-    List<boardLocation> moves = new ArrayList<>();
+  List<BoardLocation> possibleMoves(Board board){
+    List<BoardLocation> moves = new ArrayList<>();
     if (super.getFirstMove() && board.isEmpty((byte) (super.getRank()+2),super.getFile())){//Forward 2 squares available on first move for pawn
-      moves.add(new boardLocation( (byte)(super.getRank() + 2), super.getFile() ));
+      moves.add(new BoardLocation( (byte)(super.getRank() + 2), super.getFile() ));
     }
     if(board.isEmpty((byte)(super.getRank()+1),super.getFile())){ // pawn moving forward 1 square
-      moves.add(new boardLocation((byte)(super.getRank()+1),super.getFile()));
+      moves.add(new BoardLocation((byte)(super.getRank()+1),super.getFile()));
     }
     if (super.getFile()!='A') { //pawn taking piece forward on left
       if (!board.isEmpty((byte) (super.getRank() + 1), (char) (super.getFile() - 1))) {
-        moves.add(new boardLocation((byte) (super.getRank()+1), (char) (super.getFile() - 1)));
+        moves.add(new BoardLocation((byte) (super.getRank()+1), (char) (super.getFile() - 1)));
       }
     }
     if (super.getFile()!='H'){//pawn taking piece forward on right
       if(!board.isEmpty((byte) (super.getRank()+1), (char) (super.getFile()+1))){
-        moves.add(new boardLocation((byte) (super.getRank()+1), (char) (super.getFile()+1)));
+        moves.add(new BoardLocation((byte) (super.getRank()+1), (char) (super.getFile()+1)));
       }
     }
 
@@ -40,7 +40,7 @@ public class WhitePawn extends Pawn {
    * @return list of all valid move locations
    */
   @Override
-  public List<boardLocation> validMoves(Board board) {
+  public List<BoardLocation> validMoves(Board board) {
     return null;
   }
 

@@ -5,7 +5,7 @@ import java.util.*;
 
 public class King extends Piece{
 
-  King(String colour, byte rank, char file){
+  public King(String colour, byte rank, char file){
     super("King",colour,rank,file);
   }
   /**
@@ -15,13 +15,13 @@ public class King extends Piece{
    * @return list of all valid move locations.
    */
   @Override
-  List<boardLocation> possibleMoves(Board board) {
-    List<boardLocation> moves = new ArrayList<boardLocation>();
+  List<BoardLocation> possibleMoves(Board board) {
+    List<BoardLocation> moves = new ArrayList<BoardLocation>();
     for(int i=-1;i<=1;i++){
       for (int j=-1;j<=1;j++){
         if(i!=0|j!=0){
           if (board.isEmpty((byte) (super.getRank()+i), (char) (super.getFile()+j))){
-            moves.add(new boardLocation((byte) (super.getRank() + i), (char) (super.getFile() + j)));
+            moves.add(new BoardLocation((byte) (super.getRank() + i), (char) (super.getFile() + j)));
           }
         }
       }
@@ -36,7 +36,7 @@ public class King extends Piece{
    * @return list of all valid move locations
    */
   @Override
-  public List<boardLocation> validMoves(Board board) {
+  public List<BoardLocation> validMoves(Board board) {
     return null;
   }
 }

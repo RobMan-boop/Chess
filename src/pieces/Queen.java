@@ -17,12 +17,12 @@ public class Queen extends Piece{
    * @return List of all possible move locations
    */
   @Override
-  List<boardLocation> possibleMoves(Board board) {
+  List<BoardLocation> possibleMoves(Board board) {
     return null;
   }
 
   @Override
-  public List<boardLocation> validMoves(Board board) {
+  public List<BoardLocation> validMoves(Board board) {
     return null;
   }
 }

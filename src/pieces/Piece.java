@@ -23,13 +23,13 @@ public abstract class Piece {
    * @param board the board the move is being made on
    * @return List of all possible move locations
    */
-  abstract List<boardLocation> possibleMoves(Board board);
+  abstract List<BoardLocation> possibleMoves(Board board);
   /**
    * Provides a list of all board locations that a piece can make a valid move to.
    * @param board the board the move is being made on
    * @return list of all valid move locations
    */
-  public abstract List<boardLocation> validMoves(Board board);
+  public abstract List<BoardLocation> validMoves(Board board);
 
   /**
    * Moves the specified piece to the new location given if it is a legal move
@@ -39,7 +39,7 @@ public abstract class Piece {
    * @return true if piece is moved, false if move is not made
    */
   boolean move(byte rank, char file, Board board){
-    boardLocation currentMove = new boardLocation(rank,file);
+    BoardLocation currentMove = new BoardLocation(rank,file);
     if (validMoves(board).contains(currentMove)){
       this.setFile(file);
       this.setRank(rank);

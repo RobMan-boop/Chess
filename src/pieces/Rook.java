@@ -5,7 +5,7 @@ import java.util.*;
 
 public class Rook extends Piece{
 
-  Rook(String colour, byte rank, char file) {
+  public Rook(String colour, byte rank, char file) {
     super("Rook", colour, rank, file);
   }
 
@@ -17,12 +17,12 @@ public class Rook extends Piece{
    * @return List of all possible move locations
    */
   @Override
-  List<boardLocation> possibleMoves(Board board) {
+  List<BoardLocation> possibleMoves(Board board) {
     return null;
   }
 
   @Override
-  public List<boardLocation> validMoves(Board board) {
+  public List<BoardLocation> validMoves(Board board) {
     return null;
   }
 }

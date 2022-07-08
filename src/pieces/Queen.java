@@ -18,7 +18,142 @@ public class Queen extends Piece{
    */
   @Override
   List<BoardLocation> possibleMoves(Board board) {
-    return null;
+    List<BoardLocation> moves = new ArrayList<>();
+    //bishop moves
+    for (int i = 1; i <= 7; i++) {
+      //right diagonal up (white) +rank +file
+      byte newRank = (byte) (super.getRank() + i);
+      char newFile = (char) (super.getFile() + i);
+
+      if (super.getRank() + i >= 0 && super.getRank() + i >= 8 && super.getFile() + i <= Board.getMaxFile() && super.getFile() + i >= Board.getMinFile()) {
+        if (newRank >= 0 && newRank<= Board.getMaxRank() && newFile <= Board.getMaxFile() && newFile >= Board.getMinFile()) {
+          if (board.isEmpty( (newRank),  (newFile))) {
+            moves.add(new BoardLocation( (newRank),  (newFile)));
+          } else {
+            moves.add(new BoardLocation(newRank,newFile));
+            break;
+          }
+        } else {
+          break;
+        }
+      }
+    }
+
+    for (int i = 1; i <= 7; i++) {
+      //right diagonal down (white) -rank + file
+      byte newRank = (byte) (super.getRank() - i);
+      char newFile = (char) (super.getFile() + i);
+
+      if (newRank >= 0 && newRank<= Board.getMaxRank() && newFile <= Board.getMaxFile() && newFile >= Board.getMinFile()) {
+        if (board.isEmpty( (newRank),  (newFile))) {
+          moves.add(new BoardLocation( (newRank),  (newFile)));
+        } else {
+          moves.add(new BoardLocation(newRank,newFile));
+          break;
+        }
+      } else {
+        break;
+      }
+
+    }
+
+
+    for (int i = 1; i <= 7; i++) {
+      //left diagonal up (White) +rank - file
+      byte newRank = (byte) (super.getRank() + i);
+      char newFile = (char) (super.getFile() - i);
+
+      if (newRank >=Board.getMinRank() && newRank<= Board.getMaxRank() && newFile <= Board.getMaxFile() && newFile >= Board.getMinFile()) {
+        if (board.isEmpty( (newRank),  (newFile))) {
+          moves.add(new BoardLocation( (newRank),  (newFile)));
+        } else {
+          moves.add(new BoardLocation(newRank,newFile));
+          break;
+        }
+      } else {
+        break;
+      }
+    }
+
+    for (int i = 1; i <= 7; i++) {
+
+      //left diagonal down (white) - rank -file
+      byte newRank = (byte) (super.getRank() - i);
+      char newFile = (char) (super.getFile() - i);
+
+      if (newRank >=Board.getMinRank() && newRank<= Board.getMaxRank() && newFile <= Board.getMaxFile() && newFile >= Board.getMinFile()) {
+        if (board.isEmpty( (newRank),  (newFile))) {
+          moves.add(new BoardLocation( (newRank),  (newFile)));
+        } else {
+          moves.add(new BoardLocation(newRank,newFile));
+          break;
+        }
+      } else {
+        break;
+
+      }
+    }
+    //rook moves
+    for (int i=1;i<=7;i++){
+      //Moving rank forwards (white) rank+
+      byte newRank= (byte) ( super.getRank()+i);
+      if(newRank<=Board.getMaxRank()) {
+        if (board.isEmpty(newRank, super.getFile())) {
+          moves.add(new BoardLocation(newRank, super.getFile()));
+        } else {
+          moves.add(new BoardLocation(newRank, super.getFile()));
+          break;
+        }
+      }
+      else {
+        break;
+      }
+    }
+
+    for (int i=1;i<=7;i++){
+      byte newRank= (byte) ( super.getRank()+i);
+      if(newRank>=Board.getMinRank()) {
+        if (board.isEmpty(newRank, super.getFile())) {
+          moves.add(new BoardLocation(newRank, super.getFile()));
+        } else {
+          moves.add(new BoardLocation(newRank, super.getFile()));
+          break;
+        }
+      }
+      else {
+        break;
+      }
+    }
+    for (int i=1;i<=7;i++){
+      char newFile = (char) ( super.getFile()+i);
+      if(newFile<=Board.getMaxFile()) {
+        if (board.isEmpty(super.getRank(), newFile)) {
+          moves.add(new BoardLocation(super.getRank(), newFile));
+        } else {
+          moves.add(new BoardLocation(super.getRank(), newFile));
+          break;
+        }
+      }
+      else {
+        break;
+      }
+    }
+    for (int i=1;i<=7;i++){
+      //Moving file left (white) file-
+      char newFile = (char) ( super.getFile()-i);
+      if(newFile>=Board.getMinFile()) {
+        if (board.isEmpty(super.getRank(), newFile)) {
+          moves.add(new BoardLocation(super.getRank(), newFile));
+        } else {
+          moves.add(new BoardLocation(super.getRank(), newFile));
+          break;
+        }
+      }
+      else {
+        break;
+      }
+    }
+    return moves;
   }
 
   @Override

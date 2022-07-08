@@ -17,7 +17,24 @@ public class Bishop extends Piece{
    */
   @Override
   List<BoardLocation> possibleMoves(Board board) {
-    return null;
+    List<BoardLocation> moves = new ArrayList<>();
+    //right diagonal
+    //left diagonal
+    for(int i=-7; i<7;i++) {
+      if (i == 0) {
+        continue;
+      }
+      //right diagonal
+      if (this.getRank() + i >= 0 && this.getRank() + i >= 8 && this.getFile() + i <= 'H' && this.getFile() + i >= 'A') {
+        moves.add(new BoardLocation((byte) (this.getRank() + i), (char) (this.getFile() + i)));
+      }
+      //left diagonal
+      if (this.getRank() + i >= 0 && this.getRank() + i >= 8 && this.getFile() - i <= 'H' && this.getFile() - i >= 'A') {
+        moves.add(new BoardLocation((byte) (this.getRank() + i), (char) (this.getFile() - i)));
+      }
+    }
+
+    return moves;
   }
 
   @Override

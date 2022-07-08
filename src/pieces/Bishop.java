@@ -31,6 +31,7 @@ public class Bishop extends Piece {
           if (board.isEmpty( (newRank),  (newFile))) {
             moves.add(new BoardLocation( (newRank),  (newFile)));
           } else {
+            moves.add(new BoardLocation(newRank,newFile));
             break;
           }
         } else {
@@ -48,6 +49,7 @@ public class Bishop extends Piece {
         if (board.isEmpty( (newRank),  (newFile))) {
           moves.add(new BoardLocation( (newRank),  (newFile)));
         } else {
+          moves.add(new BoardLocation(newRank,newFile));
           break;
         }
       } else {
@@ -66,6 +68,7 @@ public class Bishop extends Piece {
         if (board.isEmpty( (newRank),  (newFile))) {
           moves.add(new BoardLocation( (newRank),  (newFile)));
         } else {
+          moves.add(new BoardLocation(newRank,newFile));
           break;
         }
       } else {
@@ -83,6 +86,7 @@ public class Bishop extends Piece {
         if (board.isEmpty( (newRank),  (newFile))) {
           moves.add(new BoardLocation( (newRank),  (newFile)));
         } else {
+          moves.add(new BoardLocation(newRank,newFile));
           break;
         }
       } else {
@@ -93,6 +97,7 @@ public class Bishop extends Piece {
 
     return moves;
   }
+
 
   @Override
   public List<BoardLocation> validMoves(Board board) {

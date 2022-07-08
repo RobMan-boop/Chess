@@ -18,7 +18,67 @@ public class Rook extends Piece{
    */
   @Override
   List<BoardLocation> possibleMoves(Board board) {
-    return null;
+    List<BoardLocation> moves = new ArrayList<>();
+    for (int i=1;i<=7;i++){
+      //Moving rank forwards (white) rank+
+      byte newRank= (byte) ( super.getRank()+i);
+      if(newRank<=Board.getMaxRank()) {
+        if (board.isEmpty(newRank, super.getFile())) {
+          moves.add(new BoardLocation(newRank, super.getFile()));
+        } else {
+          moves.add(new BoardLocation(newRank, super.getFile()));
+          break;
+        }
+      }
+      else {
+        break;
+      }
+    }
+
+    for (int i=1;i<=7;i++){
+      byte newRank= (byte) ( super.getRank()+i);
+      if(newRank>=Board.getMinRank()) {
+        if (board.isEmpty(newRank, super.getFile())) {
+          moves.add(new BoardLocation(newRank, super.getFile()));
+        } else {
+          moves.add(new BoardLocation(newRank, super.getFile()));
+          break;
+        }
+      }
+      else {
+        break;
+      }
+    }
+    for (int i=1;i<=7;i++){
+      char newFile = (char) ( super.getFile()+i);
+      if(newFile<=Board.getMaxFile()) {
+        if (board.isEmpty(super.getRank(), newFile)) {
+          moves.add(new BoardLocation(super.getRank(), newFile));
+        } else {
+          moves.add(new BoardLocation(super.getRank(), newFile));
+          break;
+        }
+      }
+      else {
+        break;
+      }
+    }
+    for (int i=1;i<=7;i++){
+      //Moving file left (white) file-
+      char newFile = (char) ( super.getFile()-i);
+      if(newFile>=Board.getMinFile()) {
+        if (board.isEmpty(super.getRank(), newFile)) {
+          moves.add(new BoardLocation(super.getRank(), newFile));
+        } else {
+          moves.add(new BoardLocation(super.getRank(), newFile));
+          break;
+        }
+      }
+      else {
+        break;
+      }
+    }
+    return moves;
   }
 
   @Override

@@ -1,12 +1,13 @@
 package pieces;
 
 import boards.*;
+
 import java.util.*;
 
-public class Bishop extends Piece{
+public class Bishop extends Piece {
 
   public Bishop(String colour, byte rank, char file) {
-    super("Bishop",colour,rank,file);
+    super("Bishop", colour, rank, file);
   }
 
   /**
@@ -20,17 +21,73 @@ public class Bishop extends Piece{
     List<BoardLocation> moves = new ArrayList<>();
     //right diagonal
     //left diagonal
-    for(int i=-7; i<7;i++) {
-      if (i == 0) {
-        continue;
+    for (int i = 1; i < 7; i++) {
+      //right diagonal up (white) +rank +file
+      byte newRank = (byte) (super.getRank() + i);
+      char newFile = (char) (super.getFile() + i);
+
+      if (super.getRank() + i >= 0 && super.getRank() + i >= 8 && super.getFile() + i <= 'H' && super.getFile() + i >= 'A') {
+        if (newRank >= 0 && newRank <= 8 && newFile <= 'H' && newFile >= 'A') {
+          if (board.isEmpty( (newRank),  (newFile))) {
+            moves.add(new BoardLocation( (newRank),  (newFile)));
+          } else {
+            break;
+          }
+        } else {
+          break;
+        }
       }
-      //right diagonal
-      if (this.getRank() + i >= 0 && this.getRank() + i >= 8 && this.getFile() + i <= 'H' && this.getFile() + i >= 'A') {
-        moves.add(new BoardLocation((byte) (this.getRank() + i), (char) (this.getFile() + i)));
+    }
+
+    for (int i = 1; i < 7; i++) {
+      //right diagonal down (white) -rank + file
+      byte newRank = (byte) (super.getRank() - i);
+      char newFile = (char) (super.getFile() + i);
+
+      if (newRank >= 0 && newRank <= 8 && newFile <= 'H' && newFile >= 'A') {
+        if (board.isEmpty( (newRank),  (newFile))) {
+          moves.add(new BoardLocation( (newRank),  (newFile)));
+        } else {
+          break;
+        }
+      } else {
+        break;
       }
-      //left diagonal
-      if (this.getRank() + i >= 0 && this.getRank() + i >= 8 && this.getFile() - i <= 'H' && this.getFile() - i >= 'A') {
-        moves.add(new BoardLocation((byte) (this.getRank() + i), (char) (this.getFile() - i)));
+
+    }
+
+
+    for (int i = 1; i < 7; i++) {
+      //left diagonal up (White) +rank - file
+      byte newRank = (byte) (super.getRank() + i);
+      char newFile = (char) (super.getFile() - i);
+
+      if (newRank >= 0 && newRank <= 8 && newFile <= 'H' && newFile >= 'A') {
+        if (board.isEmpty( (newRank),  (newFile))) {
+          moves.add(new BoardLocation( (newRank),  (newFile)));
+        } else {
+          break;
+        }
+      } else {
+        break;
+      }
+    }
+
+    for (int i = 1; i < 7; i++) {
+
+      //left diagonal down (white) - rank -file
+      byte newRank = (byte) (super.getRank() - i);
+      char newFile = (char) (super.getFile() - i);
+
+      if (newRank >= 0 && newRank <= 8 && newFile <= 'H' && newFile >= 'A') {
+        if (board.isEmpty( (newRank),  (newFile))) {
+          moves.add(new BoardLocation( (newRank),  (newFile)));
+        } else {
+          break;
+        }
+      } else {
+        break;
+
       }
     }
 

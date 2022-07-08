@@ -21,13 +21,13 @@ public class Bishop extends Piece {
     List<BoardLocation> moves = new ArrayList<>();
     //right diagonal
     //left diagonal
-    for (int i = 1; i < 7; i++) {
+    for (int i = 1; i <= 7; i++) {
       //right diagonal up (white) +rank +file
       byte newRank = (byte) (super.getRank() + i);
       char newFile = (char) (super.getFile() + i);
 
-      if (super.getRank() + i >= 0 && super.getRank() + i >= 8 && super.getFile() + i <= 'H' && super.getFile() + i >= 'A') {
-        if (newRank >= 0 && newRank <= 8 && newFile <= 'H' && newFile >= 'A') {
+      if (super.getRank() + i >= 0 && super.getRank() + i >= 8 && super.getFile() + i <= Board.getMaxFile() && super.getFile() + i >= Board.getMinFile()) {
+        if (newRank >= 0 && newRank<= Board.getMaxRank() && newFile <= Board.getMaxFile() && newFile >= Board.getMinFile()) {
           if (board.isEmpty( (newRank),  (newFile))) {
             moves.add(new BoardLocation( (newRank),  (newFile)));
           } else {
@@ -40,12 +40,12 @@ public class Bishop extends Piece {
       }
     }
 
-    for (int i = 1; i < 7; i++) {
+    for (int i = 1; i <= 7; i++) {
       //right diagonal down (white) -rank + file
       byte newRank = (byte) (super.getRank() - i);
       char newFile = (char) (super.getFile() + i);
 
-      if (newRank >= 0 && newRank <= 8 && newFile <= 'H' && newFile >= 'A') {
+      if (newRank >= 0 && newRank<= Board.getMaxRank() && newFile <= Board.getMaxFile() && newFile >= Board.getMinFile()) {
         if (board.isEmpty( (newRank),  (newFile))) {
           moves.add(new BoardLocation( (newRank),  (newFile)));
         } else {
@@ -59,12 +59,12 @@ public class Bishop extends Piece {
     }
 
 
-    for (int i = 1; i < 7; i++) {
+    for (int i = 1; i <= 7; i++) {
       //left diagonal up (White) +rank - file
       byte newRank = (byte) (super.getRank() + i);
       char newFile = (char) (super.getFile() - i);
 
-      if (newRank >= 0 && newRank <= 8 && newFile <= 'H' && newFile >= 'A') {
+      if (newRank >=Board.getMinRank() && newRank<= Board.getMaxRank() && newFile <= Board.getMaxFile() && newFile >= Board.getMinFile()) {
         if (board.isEmpty( (newRank),  (newFile))) {
           moves.add(new BoardLocation( (newRank),  (newFile)));
         } else {
@@ -76,13 +76,13 @@ public class Bishop extends Piece {
       }
     }
 
-    for (int i = 1; i < 7; i++) {
+    for (int i = 1; i <= 7; i++) {
 
       //left diagonal down (white) - rank -file
       byte newRank = (byte) (super.getRank() - i);
       char newFile = (char) (super.getFile() - i);
 
-      if (newRank >= 0 && newRank <= 8 && newFile <= 'H' && newFile >= 'A') {
+      if (newRank >=Board.getMinRank() && newRank<= Board.getMaxRank() && newFile <= Board.getMaxFile() && newFile >= Board.getMinFile()) {
         if (board.isEmpty( (newRank),  (newFile))) {
           moves.add(new BoardLocation( (newRank),  (newFile)));
         } else {
